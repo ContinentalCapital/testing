@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LeadSheet Now</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow glow-a"></div>
+    <div class="bg-glow glow-b"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">FOR MUSICIANS · ZERO CONFUSION</p>
+        <h1>LeadSheet Now</h1>
+        <p class="subtitle">Drop a song, or type title + artist, and get a clean lead sheet for piano, guitar, and drums.</p>
+        <div class="hero-chips">
+          <span>⚡ Fast draft</span>
+          <span>🎹 Piano</span>
+          <span>🎸 Guitar</span>
+          <span>🥁 Drums</span>
+        </div>
+      </header>
+
+      <section class="glass card">
+        <div class="step-title">
+          <span class="step-dot">1</span>
+          <h2>Pick how you want to start</h2>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Input source">
+          <button class="tab active" data-tab="upload" role="tab" aria-selected="true">Upload audio</button>
+          <button class="tab" data-tab="search" role="tab" aria-selected="false">Song + artist</button>
+        </div>
+
+        <div id="panel-upload" class="panel active" role="tabpanel">
+          <label for="audioFile" class="field-label">Audio file</label>
+          <div id="dropZone" class="drop-zone">
+            <p><strong>Drag & drop</strong> your file here, or click to browse.</p>
+            <p class="hint">Supported: mp3, wav, m4a, flac</p>
+            <input id="audioFile" type="file" accept="audio/*" />
+          </div>
+          <p id="fileName" class="tiny"></p>
+        </div>
+
+        <div id="panel-search" class="panel" role="tabpanel">
+          <label for="songName" class="field-label">Song name</label>
+          <input id="songName" type="text" placeholder="e.g., Blinding Lights" />
+          <label for="artistName" class="field-label">Artist</label>
+          <input id="artistName" type="text" placeholder="e.g., The Weeknd" />
+
+          <div class="quick-picks" aria-label="Quick picks">
+            <button class="pick" data-song="Levitating" data-artist="Dua Lipa">Levitating · Dua Lipa</button>
+            <button class="pick" data-song="Gravity" data-artist="John Mayer">Gravity · John Mayer</button>
+            <button class="pick" data-song="Billie Jean" data-artist="Michael Jackson">Billie Jean · Michael Jackson</button>
+          </div>
+        </div>
+
+        <button id="generateBtn" class="cta">Generate lead sheet</button>
+      </section>
+
+      <section class="glass card hidden" id="progressCard">
+        <div class="step-title">
+          <span class="step-dot">2</span>
+          <h2>Analyzing your song</h2>
+        </div>
+        <p id="statusText">Preparing analysis...</p>
+        <div class="progress-wrap" aria-label="Progress bar">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </section>
+
+      <section class="glass card hidden" id="resultCard">
+        <div class="step-title">
+          <span class="step-dot">3</span>
+          <h2>Your lead sheet</h2>
+        </div>
+        <div class="meta" id="meta"></div>
+        <pre id="leadSheet"></pre>
+        <div class="actions">
+          <button id="copyBtn" class="ghost">Copy lead sheet</button>
+        </div>
+        <p class="note">Demo mode: this previews UX. Production accuracy comes from the backend/ML pipeline in <code>PLAN.md</code>.</p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
