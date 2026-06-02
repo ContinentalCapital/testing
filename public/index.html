@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Live Email Sales Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Live link</p>
+          <h1>Daily sales from your inbox</h1>
+          <p class="subtitle">Share this dashboard URL and it will update automatically whenever a sales email is forwarded to the inbound endpoint.</p>
+        </div>
+        <a class="button" id="dashboardLink" href="/dashboard">Copy dashboard link</a>
+      </section>
+
+      <section class="cards" aria-label="Sales summary">
+        <article class="card">
+          <span>Today's sales</span>
+          <strong id="todayTotal">$0.00</strong>
+        </article>
+        <article class="card">
+          <span>Total revenue</span>
+          <strong id="totalRevenue">$0.00</strong>
+        </article>
+        <article class="card">
+          <span>Sales captured</span>
+          <strong id="salesCount">0</strong>
+        </article>
+      </section>
+
+      <section class="panel">
+        <div class="panelHeader">
+          <h2>Recent sales emails</h2>
+          <span id="status">Connecting…</span>
+        </div>
+        <div class="tableWrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Customer</th>
+                <th>Subject</th>
+                <th class="amount">Amount</th>
+              </tr>
+            </thead>
+            <tbody id="salesRows">
+              <tr><td colspan="4" class="empty">No sales yet. Forward a sales email to <code>/api/email-sales</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel setup">
+        <h2>Connect email</h2>
+        <ol>
+          <li>Deploy this app and open <code>/dashboard</code> as your live link.</li>
+          <li>Use your email provider, Zapier, Make, Mailgun, Postmark, or SendGrid inbound parse to forward sale emails to <code>/api/email-sales</code>.</li>
+          <li>Emails should contain a USD amount like <code>$49.00</code>; optional fields such as <code>Order #123</code> and <code>Customer: Jane</code> are captured automatically.</li>
+        </ol>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "email-sales-dashboard",
+  "version": "1.0.0",
+  "description": "Live dashboard that updates from sales emails forwarded to an inbound endpoint.",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
